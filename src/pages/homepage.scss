@@ -1,0 +1,159 @@
+.filter {
+  padding: 20px 0;
+  font-weight: normal;
+  &_text-1 {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &_text-2 {
+    font-size: 2rem;
+    color: blue;
+    margin-bottom: 1rem;
+  }
+
+  &_container {
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+
+    &-item {
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-radius: 10rem;
+      padding: 10px;
+      border: 2px solid #aaa;
+      cursor: pointer;
+    }
+
+    &-shapes {
+      cursor: pointer;
+      border-radius: 10rem;
+      padding: 15px;
+      @media only screen and (max-width: 30em) {
+        padding: 11px;
+      }
+    }
+  }
+}
+
+.main {
+  padding: 20px 0;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    // @media only screen and (max-width: 30em) {
+    //   flex-direction: column;
+    //   align-items: flex-start;
+    // }
+  }
+
+  &_bg {
+    background-color: #fff;
+    padding: 30px 50px;
+    margin-bottom: 20px;
+    // height: 15rem;
+    // vertical-align: middle;
+    @media only screen and (max-width: 50em) {
+      padding: 15px 30px;
+    }
+    // @media only screen and (max-width: 30em) {
+    //   padding: 5px 10px;
+    // }
+  }
+}
+
+.shapes {
+  width: 25%;
+  margin-top: 35px;
+
+  @media only screen and (max-width: 50em) {
+    width: 55%;
+  }
+  @media only screen and (max-width: 30em) {
+    width: auto;
+  }
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}
+.cyan {
+  background-color: cyan;
+}
+.gray {
+  background-color: gray;
+}
+
+.rounded {
+  width: 80px;
+  height: 80px;
+  // background: red;
+  display: inline-block;
+  border-radius: 50%;
+  @media only screen and (max-width: 50em) {
+    width: 60px;
+    height: 60px;
+  }
+}
+.oval {
+  width: 60px;
+  height: 80px;
+  // background: red;
+  display: inline-block;
+  //   border-radius: 50px / 50px;
+  border-radius: 50%;
+  @media only screen and (max-width: 50em) {
+    width: 40px;
+    height: 60px;
+  }
+}
+.square {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  // background: red;
+  @media only screen and (max-width: 50em) {
+    width: 60px;
+    height: 60px;
+  }
+}
+.rectangle {
+  width: 150px;
+  height: 80px;
+  display: inline-block;
+  @media only screen and (max-width: 50em) {
+    width: 130px;
+    height: 60px;
+  }
+  // background: red;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 55px solid transparent;
+  border-right: 55px solid transparent;
+  border-bottom: 81px solid red;
+  display: inline-block;
+  @media only screen and (max-width: 50em) {
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid red;
+  }
+}
