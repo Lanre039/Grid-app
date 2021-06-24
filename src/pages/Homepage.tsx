@@ -127,7 +127,6 @@ function Homepage(): JSX.Element {
 
     if (shapeFilters.length) {
       filtered = shapes.filter(({ shape }) => shapeFilters.includes(shape));
-      console.log(filtered);
     }
 
     if (colorFilters.length) {
