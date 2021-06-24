@@ -3,11 +3,13 @@ import Navbar from "../components/Navbar";
 import "./homepage.scss";
 import shapes from "../data/items.json";
 import Card from "../components/Card";
+import Filters from "../components/Filters";
 import { FilterOption, Items } from "./types";
 
 function Homepage(): JSX.Element {
   const [items, setItems] = useState<JSX.Element[]>([]);
   const [activeFilter, setActiveFilter] = useState<FilterOption[]>([]);
+  const [gridTitle, setGridTItle] = useState<string>("");
 
   useEffect(() => {
     const data = renderShapes(shapes);
@@ -41,6 +43,12 @@ function Homepage(): JSX.Element {
     setActiveFilter(filterItem);
     return filterItem;
   };
+
+  // const handleGridTitle = (shape: string[], color: string[]) => {
+  //   const
+  //   if ()
+
+  // }
 
   const selectItemByFilters = (filterItem: FilterOption[]): Items[] => {
     let filtered: Items[] = shapes;
@@ -81,127 +89,16 @@ function Homepage(): JSX.Element {
       <section className="filter container">
         <h2 className="filter_text-1">Filters</h2>
         <p className="filter_text-2">Shapes</p>
-        <div className="filter_container">
-          <span
-            className="filter_container-item"
-            onClick={() =>
-              handleFilters({
-                shape: "oval",
-                category: "shapes",
-              } as FilterOption)
-            }
-          >
-            Oval
-          </span>
-          <span
-            className="filter_container-item"
-            onClick={() =>
-              handleFilters({
-                shape: "rounded",
-                category: "shapes",
-              } as FilterOption)
-            }
-          >
-            Round
-          </span>
-          <span
-            className="filter_container-item"
-            onClick={() =>
-              handleFilters({
-                shape: "triangle",
-                category: "shapes",
-              } as FilterOption)
-            }
-          >
-            Triangle
-          </span>
-          <span
-            className="filter_container-item"
-            onClick={() =>
-              handleFilters({
-                shape: "square",
-                category: "shapes",
-              } as FilterOption)
-            }
-          >
-            Square
-          </span>
-          <span
-            className="filter_container-item"
-            onClick={() =>
-              handleFilters({
-                shape: "rectangle",
-                category: "shapes",
-              } as FilterOption)
-            }
-          >
-            Rectangle
-          </span>
-        </div>
+        <Filters filter="shapes" handleFilters={handleFilters} />
+
         <div className="shapes">
           <p className="filter_text-2">Colors</p>
-          <div className="filter_container">
-            <span
-              className="filter_container-shapes red"
-              onClick={() =>
-                handleFilters({
-                  color: "red",
-                  category: "color",
-                } as FilterOption)
-              }
-            ></span>
-            <span
-              className="filter_container-shapes blue"
-              onClick={() =>
-                handleFilters({
-                  color: "blue",
-                  category: "color",
-                } as FilterOption)
-              }
-            ></span>
-            <span
-              className="filter_container-shapes green"
-              onClick={() =>
-                handleFilters({
-                  color: "green",
-                  category: "color",
-                } as FilterOption)
-              }
-            ></span>
-            <span
-              className="filter_container-shapes yellow"
-              onClick={() =>
-                handleFilters({
-                  color: "yellow",
-                  category: "color",
-                } as FilterOption)
-              }
-            ></span>
-            <span
-              className="filter_container-shapes cyan"
-              onClick={() =>
-                handleFilters({
-                  color: "cyan",
-                  category: "color",
-                } as FilterOption)
-              }
-            ></span>
-            <span
-              className="filter_container-shapes gray"
-              onClick={() =>
-                handleFilters({
-                  color: "gray",
-                  category: "color",
-                } as FilterOption)
-              }
-            ></span>
-          </div>
+          <Filters filter="color" handleFilters={handleFilters} />
         </div>
       </section>
       <section className="main container">
         <h2 className="filter_text-1">
-          All {`${shapes.length !== items.length ? "activeItem" : ""}`} items.{" "}
-          <span>{`(${items.length})`}</span>
+          All {`${gridTitle ?? ""}`} items. <span>{`(${items.length})`}</span>
         </h2>
         <div className="main_container">{items}</div>
       </section>

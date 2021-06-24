@@ -9,3 +9,8 @@ export interface FilterOption {
   color: string;
   category: string;
 }
+
+export interface FilterProps {
+  filter: string;
+  handleFilters: (data: FilterOption) => void;
+}
