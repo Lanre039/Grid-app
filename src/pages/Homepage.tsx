@@ -4,12 +4,15 @@ import "./homepage.scss";
 import shapes from "../data/items.json";
 import Card from "../components/Card";
 import Filters from "../components/Filters";
-import { FilterOption, Items } from "./types";
+import { FilterOption, Items, Track } from "./types";
 
 function Homepage(): JSX.Element {
   const [items, setItems] = useState<JSX.Element[]>([]);
   const [activeFilter, setActiveFilter] = useState<FilterOption[]>([]);
-  const [gridTitle, setGridTItle] = useState<string>("");
+  const [gridTitleTrack, setGridTitleTrack] = useState<Track>({
+    shape: 0,
+    color: 0,
+  });
 
   useEffect(() => {
     const data = renderShapes(shapes);
@@ -23,6 +26,8 @@ function Homepage(): JSX.Element {
     ));
 
   // DESELECT EXISTING FILTERS
+  // SET ACTIVE FILTERS
+  // SET FILTER TRACK
   const deselectFilters = (data: FilterOption): FilterOption[] => {
     const { shape: itemShape = "", color: itemColor = "", category } = data;
 
@@ -36,20 +41,79 @@ function Homepage(): JSX.Element {
           ? activeFilter.filter(({ shape }) => shape !== itemShape)
           : activeFilter.filter(({ color }) => color !== itemColor);
       setActiveFilter(items);
+
+      const track =
+        category === "shapes"
+          ? { shape: gridTitleTrack.shape - 1, color: gridTitleTrack.color }
+          : { shape: gridTitleTrack.shape, color: gridTitleTrack.color - 1 };
+      setGridTitleTrack(track);
+
       return items;
     }
 
     const filterItem = [...activeFilter, data];
     setActiveFilter(filterItem);
+
+    const track =
+      category === "shapes"
+        ? { shape: gridTitleTrack.shape + 1, color: gridTitleTrack.color }
+        : { shape: gridTitleTrack.shape, color: gridTitleTrack.color + 1 };
+    setGridTitleTrack(track);
+
     return filterItem;
   };
 
-  // const handleGridTitle = (shape: string[], color: string[]) => {
-  //   const
-  //   if ()
+  // RENDER GRID TITLE
+  const renderGridTitle = () => {
+    const noOfColors = 6;
+    const noOfShapes = 5;
+    let title = "All items";
+    let item = [];
 
-  // }
+    switch (true) {
+      case gridTitleTrack.color === noOfColors &&
+        gridTitleTrack.shape === noOfShapes:
+        return <GridTitle title={title} />;
 
+      case gridTitleTrack.color === 0 && gridTitleTrack.shape === 1:
+      case gridTitleTrack.color === noOfColors && gridTitleTrack.shape === 1:
+        item = activeFilter.filter(({ shape }) => !!shape);
+        title = `All ${item[0].shape} items`;
+        return <GridTitle title={title} />;
+
+      case gridTitleTrack.color === 1 && gridTitleTrack.shape === 0:
+      case gridTitleTrack.color === 1 && gridTitleTrack.shape === noOfShapes:
+        item = activeFilter.filter(({ color }) => !!color);
+        title = `All ${item[0].color} items`;
+        return <GridTitle title={title} />;
+
+      case gridTitleTrack.color === 0 && gridTitleTrack.shape > 1:
+      case gridTitleTrack.color > 1 && gridTitleTrack.shape > 1:
+        title = "Multiple items";
+        return <GridTitle title={title} />;
+
+      case gridTitleTrack.color === 1 && gridTitleTrack.shape > 1:
+        item = activeFilter.filter(({ color }) => !!color);
+        title = `Multiple ${item[0].color} items`;
+        return <GridTitle title={title} />;
+
+      case gridTitleTrack.color > 1 && gridTitleTrack.shape === 1:
+        item = activeFilter.filter(({ shape }) => !!shape);
+        title = `Multiple ${item[0].shape} items`;
+        return <GridTitle title={title} />;
+
+      case gridTitleTrack.color === 1 && gridTitleTrack.shape === 1:
+        item = activeFilter.filter(({ shape }) => !!shape);
+        const item2 = activeFilter.filter(({ color }) => !!color);
+        title = `${item2[0].color}  ${item[0].shape} items`;
+        return <GridTitle title={title} />;
+
+      default:
+        return <GridTitle title={title} />;
+    }
+  };
+
+  // FILTER ITEM BY SHAPE OR COLOUR
   const selectItemByFilters = (filterItem: FilterOption[]): Items[] => {
     let filtered: Items[] = shapes;
 
@@ -73,6 +137,7 @@ function Homepage(): JSX.Element {
     return filtered;
   };
 
+  // SET DISPLAY ITEMS
   const handleFilters = (filterOption: FilterOption): void => {
     const filterItem = deselectFilters(filterOption);
 
@@ -82,6 +147,16 @@ function Homepage(): JSX.Element {
 
     setItems(result);
   };
+
+  const GridTitle = ({ title }: { title: string }) => (
+    <>
+      <h2 className="filter_text-1">
+        {title}
+        <span>{`(${items.length})`}</span>
+      </h2>
+      <span className="main_container">{items}</span>
+    </>
+  );
 
   return (
     <div>
@@ -96,12 +171,7 @@ function Homepage(): JSX.Element {
           <Filters filter="color" handleFilters={handleFilters} />
         </div>
       </section>
-      <section className="main container">
-        <h2 className="filter_text-1">
-          All {`${gridTitle ?? ""}`} items. <span>{`(${items.length})`}</span>
-        </h2>
-        <div className="main_container">{items}</div>
-      </section>
+      <section className="main container">{renderGridTitle()}</section>
     </div>
   );
 }

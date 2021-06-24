@@ -64,6 +64,7 @@ function Filters(props: FilterProps) {
       );
     });
   };
+
   const renderByColor = () =>
     colorFilterItem.map((color, index) => {
       const active = activeColor.includes(color)

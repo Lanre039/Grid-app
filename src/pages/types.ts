@@ -14,3 +14,8 @@ export interface FilterProps {
   filter: string;
   handleFilters: (data: FilterOption) => void;
 }
+
+export interface Track {
+  shape: number;
+  color: number;
+}
