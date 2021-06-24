@@ -1,9 +1,18 @@
 import React from "react";
+import { Items } from "../pages/types";
 
-function Card({ shape, color }: { shape: string; color: string }) {
+function Card({ shape, color }: Items): JSX.Element {
+  const triangleBg = shape === "triangle" ? color : "transparent";
   return (
     <div className="main_bg">
-      <div className={`${color} ${shape}`}></div>
+      <div
+        style={{
+          borderBottomColor: triangleBg,
+          borderBottomWidth: "81px",
+          borderBottomStyle: "solid",
+        }}
+        className={`${shape !== "triangle" ? color : "none"} ${shape}`}
+      ></div>
     </div>
   );
 }

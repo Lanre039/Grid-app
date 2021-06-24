@@ -1,3 +1,26 @@
+// COLORS
+$color-red: red;
+$color-blue: blue;
+$color-green: green;
+$color-yellow: yellow;
+$color-cyan: cyan;
+$color-gray: #aaa;
+$color-white: #fff;
+
+// RESPONSVIE BREAKPOINT
+$bp-largest: 75em; //1200px
+$bp-large: 62.5em; //900px
+$bp-medium: 50em; //800px
+$bp-small: 37.5em; //600px
+$bp-smallest: 31.25em; //500px/16
+
+// MIXINS
+@mixin flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 *,
 *::before {
   margin: 0;
@@ -12,8 +35,6 @@ html {
 }
 
 body {
-  /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
-  /* font-family: 'Archivo Black', sans-serif; */
   font-family: sans-serif;
   font-weight: 300;
   line-height: 1.6;
@@ -55,4 +76,28 @@ image {
 .container {
   max-width: 80vw;
   margin: 0 auto;
+
+  @media only screen and (max-width: 30em) {
+    max-width: 85vw;
+  }
+}
+
+.red {
+  background-color: $color-red;
+}
+
+.blue {
+  background-color: $color-blue;
+}
+.green {
+  background-color: $color-green;
+}
+.yellow {
+  background-color: $color-yellow;
+}
+.cyan {
+  background-color: $color-cyan;
+}
+.gray {
+  background-color: $color-gray;
 }
