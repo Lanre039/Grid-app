@@ -2,6 +2,7 @@
 
 .nav {
   background-color: $color-white;
+  box-shadow: 0 6px 6px -6px $color-gray;
 
   &_content {
     @include flex;
