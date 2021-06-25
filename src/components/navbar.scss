@@ -6,9 +6,10 @@
 
   &_content {
     @include flex;
-    padding: 20px 0;
-    font-size: 2rem;
+    padding: 16px 0;
+    font-size: 1.5rem;
     font-weight: 400;
+    cursor: pointer;
 
     @media only screen and (max-width: 30em) {
       padding: 10px 0;

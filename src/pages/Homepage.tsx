@@ -150,8 +150,7 @@ function Homepage(): JSX.Element {
   const GridTitle = ({ title }: { title: string }) => (
     <>
       <h2 className="filter_text-1">
-        {title}
-        <span>{`(${items.length})`}</span>
+        {title} <span>{`(${items.length})`}</span>
       </h2>
       <span className="main_container">{items}</span>
     </>
