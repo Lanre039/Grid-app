@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> render correctly 1`] = `
+<div
+  className="filter_container"
+>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="0"
+    onClick={[Function]}
+  >
+    rounded
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="1"
+    onClick={[Function]}
+  >
+    oval
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="2"
+    onClick={[Function]}
+  >
+    triangle
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="3"
+    onClick={[Function]}
+  >
+    square
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="4"
+    onClick={[Function]}
+  >
+    rectangle
+  </span>
+</div>
+`;
+
+exports[`<Filter /> render correctly 1`] = `
+<div
+  className="filter_container"
+>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="0"
+    onClick={[Function]}
+  >
+    rounded
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="1"
+    onClick={[Function]}
+  >
+    oval
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="2"
+    onClick={[Function]}
+  >
+    triangle
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="3"
+    onClick={[Function]}
+  >
+    square
+  </span>
+  <span
+    className="filter_container-item filter_shape-inactive"
+    key="4"
+    onClick={[Function]}
+  >
+    rectangle
+  </span>
+</div>
+`;

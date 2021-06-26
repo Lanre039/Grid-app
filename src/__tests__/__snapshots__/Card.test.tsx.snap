@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> render correctly 1`] = `
+<div
+  className="main_bg"
+>
+  <div
+    className="rectangle red"
+    style={
+      Object {
+        "borderBottomColor": "transparent",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "81px",
+      }
+    }
+  />
+</div>
+`;

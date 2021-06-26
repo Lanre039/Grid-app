@@ -11,7 +11,7 @@ function Card({ shape, color }: Items): JSX.Element {
           borderBottomWidth: "81px",
           borderBottomStyle: "solid",
         }}
-        className={`${shape !== "triangle" ? color : "none"} ${shape}`}
+        className={`${shape} ${shape !== "triangle" ? color : ""}`}
       ></div>
     </div>
   );
