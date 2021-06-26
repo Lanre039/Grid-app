@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> render correctly 1`] = `
-<nav
-  className="nav"
->
-  <div
-    className="nav_content container"
-  >
-    <h1>
-      SHAPES
-    </h1>
-    <h1
-      className="nav_text-right"
-      onClick={[Function]}
-    >
-      Login
-    </h1>
-  </div>
-</nav>
-`;
-
 exports[`Navbar render correctly 1`] = `
 <nav
   className="nav"

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter /> render correctly 1`] = `
+<div>
+  <Navbar />
+  <section
+    className="filter container"
+  >
+    <h2
+      className="filter_text-1"
+    >
+      Filters
+    </h2>
+    <p
+      className="filter_text-2"
+    >
+      Shapes
+    </p>
+    <Filters
+      filter="shapes"
+      handleFilters={[Function]}
+    />
+    <div
+      className="shapes"
+    >
+      <p
+        className="filter_text-2"
+      >
+        Colors
+      </p>
+      <Filters
+        filter="color"
+        handleFilters={[Function]}
+      />
+    </div>
+  </section>
+  <section
+    className="main container"
+  >
+    <GridTitle
+      title="All items"
+    />
+  </section>
+</div>
+`;

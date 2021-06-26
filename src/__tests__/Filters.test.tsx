@@ -1,43 +1,64 @@
-import Adapter from "enzyme-adapter-react-16";
 import { cleanup } from "@testing-library/react";
-import { configure, shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import Filters from "../components/Filters";
-import { FilterProps } from "../pages/types";
 
-configure({ adapter: new Adapter() });
 afterEach(cleanup);
 
-const renderFilters = ({ filter, handleFilters }: FilterProps) =>
-  shallow(<Filters filter={filter} handleFilters={handleFilters} />);
+const props = {
+  filter: "shapes",
+  handleFilters: jest.fn(),
+};
 
 describe("<Filter />", () => {
   it("render correctly", () => {
-    const wrapper = renderFilters({
-      filter: "shapes",
-      handleFilters: jest.fn(),
-    });
+    const wrapper = shallow(<Filters {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   describe("filter behaviour with shapes", () => {
     const noOfShapes = 5;
-    const wrapper = renderFilters({
-      filter: "shapes",
-      handleFilters: jest.fn(),
-    });
-    it("render number of shapes to be 5", () => {
+    const wrapper = mount(<Filters {...props} />);
+    it("render number of span (shapes) to be 5", () => {
       const elements = wrapper.find("span");
       expect(elements.length).toBe(noOfShapes);
+      expect(elements.at(0).text()).toBeTruthy();
+    });
+
+    it("span should have a text", () => {
+      const elements = wrapper.find("span");
+      expect(elements.at(0).text()).toBeTruthy();
+    });
+
+    it("add active to rounded shape after onClick event", () => {
+      const shape = wrapper.find("span").first();
+
+      expect(shape.html()).toBe(
+        '<span class="filter_container-item filter_shape-inactive">rounded</span>'
+      );
+
+      shape.simulate("click");
+
+      expect(props.handleFilters).toHaveBeenCalledTimes(1);
+
+      expect(shape.html()).toBe(
+        '<span class="filter_container-item filter_shape-active">rounded</span>'
+      );
     });
   });
 
-  it("render number of colors to be 6", () => {
+  describe("filter behaviour with color", () => {
     const noOfColors = 6;
-    const wrapper = renderFilters({
-      filter: "color",
-      handleFilters: jest.fn(),
+    const wrapper = shallow(<Filters {...props} filter="color" />);
+
+    it("render number of colors to be 6", () => {
+      const elements = wrapper.find("span");
+
+      expect(elements).toHaveLength(noOfColors);
     });
-    const elements = wrapper.find("span");
-    expect(elements.length).toBe(noOfColors);
+
+    it("span should NOT have a text", () => {
+      const elements = wrapper.find("span");
+      expect(elements.at(0).text()).toBeFalsy();
+    });
   });
 });

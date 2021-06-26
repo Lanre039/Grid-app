@@ -33,7 +33,7 @@ const AuthContext = createContext({
   logout: () => {},
 });
 
-function authReducer(state: State, action: Action) {
+export function authReducer(state: State, action: Action) {
   switch (action.type) {
     case "LOGIN":
       return {
@@ -62,7 +62,6 @@ function AuthProvider(props: any) {
   }
 
   function logout() {
-    // ls.removeAll();
     localStore.removeAll();
     dispatch({
       type: "LOGOUT",

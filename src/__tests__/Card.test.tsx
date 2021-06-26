@@ -1,8 +1,7 @@
-import Adapter from "enzyme-adapter-react-16";
 import { cleanup } from "@testing-library/react";
-import { configure, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import Card from "../components/Card";
-configure({ adapter: new Adapter() });
+
 afterEach(cleanup);
 
 const renderCard = (shape: string, color: string) =>
